@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A clean calculator powered by JavaScript and a Python Flask API.">
+  <title>Calc — Simple Calculator</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <main class="app-shell">
+    <section class="calculator" aria-label="Calculator">
+      <header class="topbar">
+        <div class="brand"><span class="brand-icon">＋</span><span>calc<span class="brand-dot">.</span></span></div>
+        <span class="api-status"><span class="status-dot"></span> Python API</span>
+      </header>
+
+      <div class="screen">
+        <div class="screen-label">DISPLAY</div>
+        <div id="expression" class="expression" aria-live="polite">0</div>
+        <div id="result" class="result">Ready</div>
+      </div>
+
+      <div class="keypad">
+        <button class="key utility" data-action="clear">AC</button>
+        <button class="key utility" data-action="delete" aria-label="Delete last character">⌫</button>
+        <button class="key utility" data-value="%">%</button>
+        <button class="key operator" data-value="/">÷</button>
+
+        <button class="key" data-value="7">7</button>
+        <button class="key" data-value="8">8</button>
+        <button class="key" data-value="9">9</button>
+        <button class="key operator" data-value="*">×</button>
+
+        <button class="key" data-value="4">4</button>
+        <button class="key" data-value="5">5</button>
+        <button class="key" data-value="6">6</button>
+        <button class="key operator" data-value="-">−</button>
+
+        <button class="key" data-value="1">1</button>
+        <button class="key" data-value="2">2</button>
+        <button class="key" data-value="3">3</button>
+        <button class="key operator" data-value="+">+</button>
+
+        <button class="key zero" data-value="0">0</button>
+        <button class="key" data-value=".">.</button>
+        <button class="key equals" data-action="calculate">=</button>
+      </div>
+      <p id="message" class="message" role="status">Use your keyboard or tap the buttons.</p>
+    </section>
+
+    <aside class="history-panel">
+      <div class="history-heading">
+        <div><p class="eyebrow">YOUR WORK</p><h2>History</h2></div>
+        <button id="clear-history" class="text-button">Clear</button>
+      </div>
+      <div id="history-list" class="history-list">
+        <p class="empty-history">Your calculations will appear here.</p>
+      </div>
+      <div class="tech-card">
+        <span class="tech-label">BUILT WITH</span>
+        <div class="tech-tags"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>Python</span><span>Flask</span></div>
+      </div>
+    </aside>
+  </main>
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

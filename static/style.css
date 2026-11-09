@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap');
+
+:root {
+  color-scheme: dark;
+  --bg: #0b1020;
+  --panel: #121a2d;
+  --panel-light: #1a2540;
+  --text: #f4f7ff;
+  --muted: #8793ad;
+  --accent: #8b7cff;
+  --accent-bright: #a69aff;
+  --line: rgba(255,255,255,.08);
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; min-height: 100vh; display: grid; place-items: center; padding: 32px 18px;
+  color: var(--text); font-family: Manrope, sans-serif;
+  background: radial-gradient(circle at 15% 15%, #22214b 0, transparent 32%), radial-gradient(circle at 90% 85%, #102d3c 0, transparent 28%), var(--bg);
+}
+.app-shell { width: min(920px, 100%); display: grid; grid-template-columns: minmax(310px, 1.1fr) minmax(250px, .9fr); gap: 22px; }
+.calculator, .history-panel { background: rgba(18,26,45,.92); border: 1px solid var(--line); border-radius: 25px; box-shadow: 0 25px 80px rgba(0,0,0,.28); }
+.calculator { padding: 25px; }
+.topbar, .brand, .api-status, .history-heading { display: flex; align-items: center; }
+.topbar, .history-heading { justify-content: space-between; }
+.brand { gap: 10px; font-size: 20px; font-weight: 800; letter-spacing: -.8px; }
+.brand-icon { display: grid; place-items: center; width: 30px; height: 30px; border-radius: 10px; background: var(--accent); font-size: 21px; }
+.brand-dot { color: var(--accent-bright); }
+.api-status { gap: 7px; color: var(--muted); font-size: 11px; }
+.status-dot { width: 7px; height: 7px; background: #48d6a1; border-radius: 50%; box-shadow: 0 0 10px #48d6a1; }
+.screen { min-height: 160px; margin: 24px 0 18px; padding: 19px 18px; border-radius: 17px; background: #0b1222; border: 1px solid var(--line); display: flex; flex-direction: column; justify-content: flex-end; text-align: right; overflow: hidden; }
+.screen-label, .eyebrow, .tech-label { color: var(--muted); font-size: 9px; font-weight: 800; letter-spacing: 1.8px; }
+.expression { margin-top: 15px; min-height: 39px; font: 500 clamp(22px, 4vw, 32px) 'DM Mono', monospace; overflow-wrap: anywhere; }
+.result { min-height: 21px; margin-top: 7px; color: var(--accent-bright); font: 14px 'DM Mono', monospace; }
+.keypad { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+.key { min-height: 59px; border: 1px solid var(--line); border-radius: 14px; background: var(--panel-light); color: var(--text); font: 600 17px Manrope, sans-serif; cursor: pointer; transition: transform .12s, background .12s; }
+.key:hover { background: #293657; transform: translateY(-2px); }
+.key:active { transform: scale(.96); }
+.key.utility { color: #b9b2ff; background: #242344; }
+.key.operator { color: var(--accent-bright); background: #29264b; font-size: 21px; }
+.key.equals { background: var(--accent); border-color: var(--accent); color: white; font-size: 22px; }
+.key.equals:hover { background: #7969f2; }
+.key.zero { grid-column: span 2; }
+.message { min-height: 16px; margin: 15px 0 0; color: var(--muted); text-align: center; font-size: 10px; }
+.history-panel { padding: 27px 23px; display: flex; flex-direction: column; min-height: 530px; }
+.eyebrow { margin: 0 0 5px; }
+.history-heading h2 { margin: 0; font-size: 24px; letter-spacing: -1px; }
+.text-button { border: 0; background: transparent; color: var(--accent-bright); font: 700 11px Manrope; cursor: pointer; }
+.history-list { flex: 1; margin-top: 24px; }
+.empty-history { color: var(--muted); font-size: 12px; line-height: 1.7; }
+.history-item { padding: 13px 0; border-bottom: 1px solid var(--line); }
+.history-expression { color: var(--muted); font: 11px 'DM Mono', monospace; overflow-wrap: anywhere; }
+.history-result { margin-top: 5px; font: 15px 'DM Mono', monospace; cursor: pointer; }
+.tech-card { padding: 16px; border: 1px solid var(--line); border-radius: 15px; background: rgba(255,255,255,.025); }
+.tech-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 11px; }
+.tech-tags span { padding: 6px 8px; border-radius: 7px; background: #202b45; color: #c5cce0; font-size: 9px; }
+@media (max-width: 700px) { .app-shell { max-width: 440px; grid-template-columns: 1fr; } .history-panel { min-height: 250px; } }
